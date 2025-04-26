@@ -2,9 +2,9 @@
 
 namespace Durnerlys\DummyQuotes;
 
+use Durnerlys\DummyQuotes\Commands\DummyQuotesCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Durnerlys\DummyQuotes\Commands\DummyQuotesCommand;
 
 class DummyQuotesServiceProvider extends PackageServiceProvider
 {
