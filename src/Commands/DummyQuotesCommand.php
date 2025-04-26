@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Durnerlys\DummyQuotes\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class DummyQuotesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'dummy-quotes';
 
     public $description = 'My command';
 
