@@ -17,8 +17,6 @@ class DummyQuotesController extends Controller
 
     /**
      * Displays the main view for dummy quotes.
-     *
-     * @return \Illuminate\View\View
      */
     public function index(): \Illuminate\View\View
     {
@@ -27,8 +25,6 @@ class DummyQuotesController extends Controller
 
     /**
      * Returns all quotes as a JSON response.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function allQuotes(): JsonResponse
     {
@@ -37,8 +33,6 @@ class DummyQuotesController extends Controller
 
     /**
      * Returns a random quote as a JSON response.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function randomQuote(): JsonResponse
     {
@@ -48,8 +42,7 @@ class DummyQuotesController extends Controller
     /**
      * Returns a specific quote by its ID as a JSON response.
      *
-     * @param int $id The ID of the quote to retrieve.
-     * @return \Illuminate\Http\JsonResponse
+     * @param  int  $id  The ID of the quote to retrieve.
      */
     public function quote(int $id): JsonResponse
     {

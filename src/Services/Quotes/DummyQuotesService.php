@@ -2,17 +2,22 @@
 
 namespace Durnerlys\DummyQuotes\Services\Quotes;
 
-use Durnerlys\DummyQuotes\Contracts\Quotes\QuoteRetrieverInterface;
 use Durnerlys\DummyQuotes\Contracts\Cache\CacheServiceInterface;
+use Durnerlys\DummyQuotes\Contracts\Quotes\QuoteRetrieverInterface;
 use Durnerlys\DummyQuotes\Contracts\RateLimiter\RateLimiterInterface;
 
 class DummyQuotesService implements QuoteRetrieverInterface
 {
     public string $baseUrl;
+
     public int $maxRequests;
+
     public int $timeInterval;
+
     public string $allQuotesCacheKey = 'dummy_quotes_all';
+
     public string $randomQuoteCacheKey = 'dummy_quote_random';
+
     public string $searchByIdCacheKey = 'dummy_quote_by_id';
 
     public function __construct(
@@ -25,7 +30,7 @@ class DummyQuotesService implements QuoteRetrieverInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getAllQuotes(): array
     {
@@ -61,6 +66,7 @@ class DummyQuotesService implements QuoteRetrieverInterface
                 ];
 
                 $this->cacheService->put($cacheKey, $quotesData);
+
                 return $quotesData;
             }
         }
@@ -72,7 +78,7 @@ class DummyQuotesService implements QuoteRetrieverInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRandomQuote(): ?array
     {
@@ -106,7 +112,7 @@ class DummyQuotesService implements QuoteRetrieverInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getQuote(int $id): ?array
     {

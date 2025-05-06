@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Durnerlys\DummyQuotes\Http\Controllers\DummyQuotesController;
+use Illuminate\Support\Facades\Route;
 
 /**
  * API routes for managing quotes.
@@ -22,5 +22,4 @@ Route::prefix('api/quotes')->group(function () {
  *
  * @url GET /quotes-ui/{any?}
  */
-
 Route::get('/quotes-ui/{any?}', [DummyQuotesController::class, 'index']);

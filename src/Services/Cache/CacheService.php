@@ -5,18 +5,23 @@ namespace Durnerlys\DummyQuotes\Services\Cache;
 use Arr;
 use Durnerlys\DummyQuotes\Contracts\Cache\CacheServiceInterface;
 use Durnerlys\DummyQuotes\Contracts\RateLimiter\RateLimiterInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Http\JsonResponse;
 use Str;
 
 class CacheService implements CacheServiceInterface
 {
     protected int $maxRequests;
+
     protected int $timeInterval;
+
     protected string $allQuotesCacheKey = 'dummy_quotes_all';
+
     protected string $randomQuoteCacheKey = 'dummy_quote_random';
+
     protected string $searchByIdCacheKey = 'dummy_quote_by_id';
+
     protected string $cacheReadKeyPrefix = 'dummy_quotes_cache_read_';
 
     protected RateLimiterInterface $rateLimiter;
@@ -30,7 +35,7 @@ class CacheService implements CacheServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function get(string $key): mixed
     {
@@ -38,7 +43,7 @@ class CacheService implements CacheServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function put(string $key, mixed $value, int $ttl = 3600): void
     {
@@ -46,7 +51,7 @@ class CacheService implements CacheServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function has(string $key): bool
     {
@@ -54,7 +59,7 @@ class CacheService implements CacheServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function checkRateLimitForCache(string $key): bool|JsonResponse
     {
@@ -72,6 +77,7 @@ class CacheService implements CacheServiceInterface
 
         if ($result === false) {
             $secondsUntilAvailable = RateLimiter::availableIn($key);
+
             return response()->json([
                 'message' => 'Too many requests.',
                 'error' => true,
@@ -83,7 +89,7 @@ class CacheService implements CacheServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function binarySearchLocalCache(string $allQuotesCacheKey, int $id): ?array
     {
@@ -109,12 +115,12 @@ class CacheService implements CacheServiceInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
-    public function getCachedDataWithRateLimit(string $cacheKey, int $id = null): mixed
+    public function getCachedDataWithRateLimit(string $cacheKey, ?int $id = null): mixed
     {
         $allQuotesKey = $this->allQuotesCacheKey;
-        $rateLimitKey = $this->cacheReadKeyPrefix . Str::slug($cacheKey);
+        $rateLimitKey = $this->cacheReadKeyPrefix.Str::slug($cacheKey);
 
         if ($this->has($allQuotesKey)) {
             $response = $this->checkRateLimitForCache($rateLimitKey);
@@ -125,6 +131,7 @@ class CacheService implements CacheServiceInterface
 
             if ($cacheKey === $this->randomQuoteCacheKey) {
                 $randomQuote = $this->get($allQuotesKey);
+
                 return Arr::random($randomQuote['quotes']);
             } elseif ($cacheKey === $this->searchByIdCacheKey && $id !== null) {
                 return $this->binarySearchLocalCache($allQuotesKey, $id);
@@ -132,6 +139,7 @@ class CacheService implements CacheServiceInterface
                 return $this->get($cacheKey);
             }
         }
+
         return null;
     }
 }

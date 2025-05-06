@@ -3,16 +3,18 @@
 namespace Durnerlys\DummyQuotes\Services\RateLimiter;
 
 use Durnerlys\DummyQuotes\Contracts\RateLimiter\RateLimiterInterface;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Http\Client\Response;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 
 class RateLimiterService implements RateLimiterInterface
 {
     protected int $maxRequests;
+
     protected int $timeInterval;
+
     protected string $allQuotesCacheKey = 'dummy_quotes_all';
 
     public function __construct()
@@ -22,15 +24,15 @@ class RateLimiterService implements RateLimiterInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function generateKey(string $identifier): string
     {
-        return 'rate_limit:' . Str::slug($identifier) . ':' . request()->ip();
+        return 'rate_limit:'.Str::slug($identifier).':'.request()->ip();
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function callApiWithRateLimit(string $url, array $queryParams = []): Response|JsonResponse
     {
@@ -48,6 +50,7 @@ class RateLimiterService implements RateLimiterInterface
 
         if ($result === false) {
             $secondsUntilAvailable = RateLimiter::availableIn($key);
+
             return response()->json([
                 'message' => 'Too many requests.',
                 'error' => true,

@@ -8,14 +8,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DummyQuotesApi
 {
-    public function __construct(protected DummyQuotesService $quoteService)
-    {
-    }
+    public function __construct(protected DummyQuotesService $quoteService) {}
 
     /**
      * Returns all quotes as a JSON response.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function getAllQuotes(): JsonResponse
     {
@@ -37,8 +33,6 @@ class DummyQuotesApi
 
     /**
      * Returns a random quote as a JSON response.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function getRandomQuote(): JsonResponse
     {
@@ -57,8 +51,7 @@ class DummyQuotesApi
     /**
      * Returns a specific quote by its ID as a JSON response.
      *
-     * @param int $id The ID of the quote to retrieve.
-     * @return \Illuminate\Http\JsonResponse
+     * @param  int  $id  The ID of the quote to retrieve.
      */
     public function getQuote(int $id): JsonResponse
     {

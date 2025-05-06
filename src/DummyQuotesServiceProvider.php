@@ -6,8 +6,8 @@ use Durnerlys\DummyQuotes\Api\DummyQuotesApi;
 use Durnerlys\DummyQuotes\Contracts\Cache\CacheServiceInterface;
 use Durnerlys\DummyQuotes\Contracts\Quotes\QuoteRetrieverInterface;
 use Durnerlys\DummyQuotes\Contracts\RateLimiter\RateLimiterInterface;
-use Durnerlys\DummyQuotes\Services\Quotes\DummyQuotesService;
 use Durnerlys\DummyQuotes\Services\Cache\CacheService;
+use Durnerlys\DummyQuotes\Services\Quotes\DummyQuotesService;
 use Durnerlys\DummyQuotes\Services\RateLimiter\RateLimiterService;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -52,23 +52,23 @@ class DummyQuotesServiceProvider extends PackageServiceProvider
     public function bootingPackage(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/dummy-quotes.php' => config_path('dummy-quotes.php'),
+            __DIR__.'/../config/dummy-quotes.php' => config_path('dummy-quotes.php'),
         ], 'dummy-quotes-config');
 
         $this->publishes([
-            __DIR__ . '/../routes/api.php' => base_path('routes/dummy-quotes-api.php'),
+            __DIR__.'/../routes/api.php' => base_path('routes/dummy-quotes-api.php'),
         ], 'dummy-quotes-routes');
 
         $this->publishes([
-            __DIR__ . '/../dist' => public_path('vendor/durnerlys/dummy-quotes/dist'),
+            __DIR__.'/../dist' => public_path('vendor/durnerlys/dummy-quotes/dist'),
         ], 'dummy-quotes-assets');
 
         $this->publishes([
-            __DIR__ . '/../resources/js' => base_path('resources/vendor/durnerlys/dummy-quotes/js'),
+            __DIR__.'/../resources/js' => base_path('resources/vendor/durnerlys/dummy-quotes/js'),
         ], 'dummy-quotes-vue-sources');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => base_path('resources/views/vendor/durnerlys/dummy-quotes'),
+            __DIR__.'/../resources/views' => base_path('resources/views/vendor/durnerlys/dummy-quotes'),
         ], 'dummy-quotes-views');
     }
 }

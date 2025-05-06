@@ -1,8 +1,8 @@
 <?php
 
-use Durnerlys\DummyQuotes\Services\Quotes\DummyQuotesService;
 use Durnerlys\DummyQuotes\Contracts\Cache\CacheServiceInterface;
 use Durnerlys\DummyQuotes\Contracts\RateLimiter\RateLimiterInterface;
+use Durnerlys\DummyQuotes\Services\Quotes\DummyQuotesService;
 use Illuminate\Http\JsonResponse;
 
 beforeEach(function () {
