@@ -2,9 +2,9 @@
 
 namespace Durnerlys\DummyQuotes\Tests;
 
+use Durnerlys\DummyQuotes\DummyQuotesServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Durnerlys\DummyQuotes\DummyQuotesServiceProvider;
 
 class TestCase extends Orchestra
 {
