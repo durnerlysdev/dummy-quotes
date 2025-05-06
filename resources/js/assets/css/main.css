@@ -1,0 +1,31 @@
+.container {
+    max-width: 960px; /* A bit wider for better presentation */
+    margin: 40px auto; /* More top margin for breathing space */
+    padding: 20px; /* Adds some internal padding */
+    background-color: #f8f9fa; /* A very light background for subtle contrast */
+    border-radius: 8px; /* Rounded borders for a softer look */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); /* Very soft shadow */
+}
+
+h1 {
+    font-size: 2.5rem; /* Larger title */
+    margin-bottom: 0; /* Removes the bottom margin of the h1, the header has margin */
+}
+
+nav a {
+    text-decoration: none;
+    transition: all 0.3s ease; /* Smooth transition for buttons */
+}
+
+nav a:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
+}
+
+.form-control-sm {
+    max-width: 80px; /* Controlled width for the search input */
+    display: inline-block !important; /* Ensures it aligns with the buttons */
+}
+
+main {
+    border-left: 3px solid #007bff; /* Side line to highlight the main content */
+}
