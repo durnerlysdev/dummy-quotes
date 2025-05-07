@@ -56,11 +56,11 @@ This package utilizes Vue.js for its user interface components. To ensure proper
 
 -   `vue-router`: (Minimum recommended version: `^4.5.1` or the version used by this package). Required because this package uses Vue Router within its components.
 
-        ```bash
-        npm install vue-router@^4.5.1
-        # or
-        yarn add vue-router@^4.5.1
-        ```
+    ```bash
+    npm install vue-router@^4.5.1
+    # or
+    yarn add vue-router@^4.5.1
+    ```
 
     **Other CSS/UI Dependencies:**
 
